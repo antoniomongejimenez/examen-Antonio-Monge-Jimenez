@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmpleTable extends Migration
+class CreateCceeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateEmpleTable extends Migration
      */
     public function up()
     {
-        Schema::create('emple', function (Blueprint $table) {
+        Schema::create('ccee', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->timestamp('fecha_alt')->nullable();
-            $table->decimal('salario', 6, 2);
-            $table->foreignId('depart_id')->constrained('depart');
+            $table->string('ce');
+            $table->string('descripcion');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateEmpleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('emple');
+        Schema::dropIfExists('ccee');
     }
 }

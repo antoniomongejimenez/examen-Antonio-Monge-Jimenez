@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\DepartController;
 use App\Http\Controllers\EmpleController;
+use App\Http\Controllers\NotasController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,27 +22,17 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/prueba', function () {
-    return view('prueba');
-});
 
-Route::get('/depart', [DepartController::class, 'index']);
-Route::get('/depart/create', [DepartController::class, 'create']);
-Route::post('/depart', [DepartController::class, 'store'])
-    ->name('depart.store');
-Route::get('/depart/{id}/edit', [DepartController::class, 'edit']);
-Route::put('/depart/{id}', [DepartController::class, 'update'])
-    ->name('depart.update');
+Route::get('/alumnos', [AlumnosController::class, 'index']);
+Route::get('/alumnos/create', [AlumnosController::class, 'create']);
+Route::post('/alumnos', [AlumnosController::class, 'store'])
+    ->name('alumnos.store');
+Route::get('/alumnos/{id}/edit', [AlumnosController::class, 'edit']);
+Route::put('/alumnos/{id}', [AlumnosController::class, 'update'])
+    ->name('alumnos.update');
+Route::delete('/alumnos/{id}', [AlumnosController::class, 'destroy']);
 
-Route::get('/emple', [EmpleController::class, 'index']);
-Route::get('/emple/create', [EmpleController::class, 'create']);
-Route::post('/emple', [EmpleController::class, 'store'])
-    ->name('emple.store');
-Route::get('/emple/{id}', [EmpleController::class, 'show'])->where('id', '[0-9]+');
-Route::delete('/emple/{id}', [EmpleController::class, 'destroy']);
-Route::get('/emple/{id}/edit', [EmpleController::class, 'edit']);
-Route::put('/emple/{id}', [EmpleController::class, 'update'])
-    ->name('emple.update');
+Route::get('/notas', [NotasController::class, 'index']);
 
 Route::get('/login', [UsuariosController::class, 'loginForm']);
 Route::post('/login', [UsuariosController::class, 'login']);
